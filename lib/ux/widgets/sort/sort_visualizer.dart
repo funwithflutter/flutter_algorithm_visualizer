@@ -27,7 +27,7 @@ class _SortVisualizerState extends State<SortVisualizer> {
     return SingleChildScrollView(
       child: Consumer<BubbleSortProvider>(
         builder: (_, provider, __) {
-          return Container(
+          return SizedBox(
             height: _getHeight(
               MediaQuery.of(context).size,
               provider.numbers.length,
