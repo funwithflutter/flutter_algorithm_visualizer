@@ -1,5 +1,6 @@
-import 'package:algorithms_visualizer/providers/sort/bubble_sort_provider.dart';
+import 'package:algorithms_visualizer/ux/widgets/sort/sort_speed.dart';
 import 'package:algorithms_visualizer/ux/widgets/sort/sort_visualizer.dart';
+import 'package:algorithms_visualizer/ux/widgets/sort/sort_button.dart';
 import 'package:flutter/material.dart';
 
 class BubbleSortPage extends StatefulWidget {
@@ -14,7 +15,7 @@ class _BubbleSortPageState extends State<BubbleSortPage> {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           const SizedBox(
             height: 64,
@@ -24,39 +25,12 @@ class _BubbleSortPageState extends State<BubbleSortPage> {
             child: Text('Bubble Sort',
                 style: Theme.of(context).textTheme.display1),
           ),
-          FlatButton(
-            child: const Text('click'),
-            onPressed: () {
-              BubbleSortProvider().sort();
-            },
+          const AspectRatio(
+            aspectRatio: 1,
+            child: SortVisualizer()
           ),
-          const Expanded(
-            child: SortVisualizer(),
-          )
-          // Expanded(
-          //   child: Stack(
-          //     alignment: AlignmentDirectional.topStart,
-          //     children: <Widget>[
-          //       // Positioned.(child: Text("hello")),
-          //       Positioned(top:0, left: 0, child: Text('asdf'),)
-          //     ],
-          //   ),
-          // )
-          // SortVisualizer(),
-          // Expanded(
-          //   child: Stack(
-          //     children: <Widget>[
-          //       // Positioned(
-          //       //     left: 0,
-          //       //     top: 0,
-          //       //     height: 100,
-          //       //     child: SizedBox(
-          //       //         height: 100, width: 100, child: Text('hello'))),
-          //       // Positioned(bottom: 0,left:0,child: Text('hello')),
-          //       // Text('hello'),
-          //     ],
-          //   ),
-          // )
+          const SortButton(),
+          const SortSpeed(),
         ],
       ),
     );

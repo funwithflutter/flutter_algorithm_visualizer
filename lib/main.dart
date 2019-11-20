@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Algorithms',
       debugShowCheckedModeBanner: false,
+      showPerformanceOverlay: true,
       home: Scaffold(
         body: MultiProvider(
           providers: [

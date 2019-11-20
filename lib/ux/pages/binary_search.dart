@@ -2,6 +2,7 @@ import 'package:algorithms_visualizer/providers/search/binary_search_provider.da
 import 'package:algorithms_visualizer/ux/widgets/search/search.dart';
 import 'package:algorithms_visualizer/ux/widgets/search/search_indicator.dart';
 import 'package:algorithms_visualizer/ux/widgets/search/search_message.dart';
+import 'package:algorithms_visualizer/ux/widgets/search/search_speed.dart';
 import 'package:algorithms_visualizer/ux/widgets/search/search_visualizer.dart';
 import 'package:flutter/material.dart';
 
@@ -29,6 +30,7 @@ class BinarySearchPage extends StatelessWidget {
             ),
             const SearchMessage<BinarySearchProvider>(),
             const SizedBox(height: 24),
+            const SearchSpeed<BinarySearchProvider>(),
             const Search<BinarySearchProvider>(),
             const SizedBox(height: 24),
           ],

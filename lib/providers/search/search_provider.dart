@@ -1,3 +1,4 @@
+import 'package:algorithms_visualizer/utils/wait.dart';
 import 'package:flutter/material.dart';
 import 'package:algorithms_visualizer/models/search_model.dart';
 
@@ -23,22 +24,50 @@ abstract class SearchProvider extends ChangeNotifier {
     SearchModel(74),
   ];
 
-  bool isSearching = false;
-  int position = -2;
+  bool _isSearching = false;
+  int _position = -2;
+
+  bool get isSearching => _isSearching;
+  int get position => _position;
+
+  double _sortSpeed = 0.5;
+  double get sortSpeed => _sortSpeed;
+  set sortSpeed(double speed) {
+    if (speed > 1.0) {
+      _sortSpeed = 1;
+      return;
+    }
+    if (speed < 0) {
+      _sortSpeed = 0;
+      return;
+    }
+    _sortSpeed = speed;
+    render();
+  }
 
   @mustCallSuper
   void search({int value = 34}) {
     reset();
-    isSearching = true;
+    _isSearching = true;
   }
 
   @protected
   void reset() {
-    isSearching = false;
-    position = -2;
+    _isSearching = false;
+    _position = -2;
     for (var number in numbers) {
       number.reset();
     }
+    notifyListeners();
+  }
+
+  @protected
+  Future pause() async {
+    await wait(sortSpeed: sortSpeed);
+  }
+
+  @protected
+  void render() {
     notifyListeners();
   }
 
@@ -70,16 +99,16 @@ abstract class SearchProvider extends ChangeNotifier {
 
   @protected
   void foundNode(int index) {
-    isSearching = false;
+    _isSearching = false;
     numbers[index].found();
-    position = index;
+    _position = index;
     notifyListeners();
   }
 
   @protected
   void nodeNotFound() {
-    isSearching = false;
-    position = -1;
+    _isSearching = false;
+    _position = -1;
     notifyListeners();
   }
 

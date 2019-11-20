@@ -22,7 +22,11 @@ class _HomeState extends State<Home> {
     });
   }
 
-  var pages = [const LinearSearchPage(), const BinarySearchPage(), const BubbleSortPage()];
+  var pages = [
+    const BubbleSortPage(),
+    const LinearSearchPage(),
+    const BinarySearchPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {

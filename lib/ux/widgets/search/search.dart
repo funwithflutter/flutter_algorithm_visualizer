@@ -42,6 +42,17 @@ class _SearchState<T extends SearchProvider> extends State<Search<T>> {
             keyboardType: TextInputType.number,
           ),
         ),
+        // Selector<T, bool>(
+        //   selector: (_, searchProvider) => searchProvider.isSearching,
+        //   builder: (_, isSearching, child) {
+        //     return RaisedButton(
+        //       onPressed: isSearching ? null : _search,
+        //       child: child,
+        //     );
+        //   },
+        //   child: const Text('Search'),
+        // )
+
         Consumer<T>(
             builder: (_, provider, child) {
               return RaisedButton(

@@ -1,17 +1,17 @@
+import 'package:algorithms_visualizer/models/search_model.dart';
 import 'package:algorithms_visualizer/providers/search/search_provider.dart';
-import 'package:algorithms_visualizer/utils/wait.dart';
 
 class LinearSearchProvider extends SearchProvider {
   @override
   void search({int value = 34}) {
     super.search(value: value);
-    _startSearch(value);
+    _startSearch(numbers, value);
   }
 
-  Future _startSearch(int target) async {
-    for (var index = 0; index < numbers.length; index++) {
+  Future _startSearch(List<SearchModel> list, int target) async {
+    for (var index = 0; index < list.length; index++) {
       potentialNode(index);
-      await wait();
+      await pause();
       if (numbers[index].value == target) {
         foundNode(index);
         return;

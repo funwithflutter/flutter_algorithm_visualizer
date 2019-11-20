@@ -3,34 +3,49 @@ import 'package:algorithms_visualizer/ux/widgets/sort/sort_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SortVisualizer extends StatelessWidget {
-  const SortVisualizer({Key key}) : super(key: key);
+class SortVisualizer extends StatefulWidget {
+  const SortVisualizer({
+    Key key,
+    this.blockSize = 100,
+  }) : super(key: key);
+
+  final double blockSize;
+
+  @override
+  _SortVisualizerState createState() => _SortVisualizerState();
+}
+
+class _SortVisualizerState extends State<SortVisualizer> {
+  double _getHeight(Size size, int numOfWidgets) {
+    final horizontalFit = size.width ~/ widget.blockSize;
+    final rows = (numOfWidgets / horizontalFit).ceil();
+    return rows * widget.blockSize;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<BubbleSortProvider>(
-      builder: (_, provider, __) {
-        // return Wrap(
-        //   alignment: WrapAlignment.center,
-        //   crossAxisAlignment: WrapCrossAlignment.center,
-        //   children: <Widget>[
-        //     for (var number in provider.numbers)
-        //       SortWidget(
-        //         number: number,
-        //       ),
-        //   ],
-        // );
-        return Stack(
-          children: <Widget>[
-            for (var i = 0; i < provider.numbers.length; i++)
-              SortWidget(
-                number: provider.numbers[i],
-                positionIndex: i,
-              )
-          ],
-        );
-      },
+    return SingleChildScrollView(
+      child: Consumer<BubbleSortProvider>(
+        builder: (_, provider, __) {
+          return Container(
+            height: _getHeight(
+              MediaQuery.of(context).size,
+              provider.numbers.length,
+            ),
+            child: Stack(
+              children: <Widget>[
+                for (var i = 0; i < provider.numbers.length; i++)
+                  SortWidget(
+                    key: provider.numbers[i].key,
+                    number: provider.numbers[i],
+                    index: i,
+                    widgetSize: widget.blockSize,
+                  )
+              ],
+            ),
+          );
+        },
+      ),
     );
-    // return PositionedTransition
   }
 }

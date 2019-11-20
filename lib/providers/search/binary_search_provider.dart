@@ -1,6 +1,5 @@
 import 'package:algorithms_visualizer/models/search_model.dart';
 import 'package:algorithms_visualizer/providers/search/search_provider.dart';
-import 'package:algorithms_visualizer/utils/wait.dart';
 
 class BinarySearchProvider extends SearchProvider {
   @override
@@ -18,18 +17,20 @@ class BinarySearchProvider extends SearchProvider {
     while (left <= right) {
       final middle = (left + right) ~/ 2;
       potentialNode(middle);
-      await wait();
+      await pause();
       final potentialMatch = list[middle].value;
       if (target == potentialMatch) {
         foundNode(middle);
         return middle;
       } else if (target < potentialMatch) {
         discardNodes(middle + 1, right);
-        await wait();
+        await pause();
+
         right = middle - 1;
       } else {
         discardNodes(left, middle - 1);
-        await wait();
+        await pause();
+
         left = middle + 1;
       }
       searchedNode(middle);

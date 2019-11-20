@@ -1,5 +1,5 @@
 /// These functions are not used within the application
-/// and only serve to illustrate the relevant operation
+/// They only serve to illustrate the relevant operation
 
 int binarySearch(List<int> list, int target) {
   return _binarySearchHelper(list, target, 0, list.length - 1);

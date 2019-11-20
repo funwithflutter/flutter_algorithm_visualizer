@@ -23,14 +23,87 @@ class SortProvider extends ChangeNotifier {
     SortModel(69),
   ];
 
+  bool _isSorting = false;
+  bool get isSorting => _isSorting;
+
+  bool _isSorted = false;
+  bool get isSorted => _isSorted;
+
+  double _sortSpeed = 0.5;
+  double get sortSpeed => _sortSpeed;
+  set sortSpeed(double speed) {
+    if (speed > 1.0) {
+      _sortSpeed = 1;
+      return;
+    }
+    if (speed < 0) {
+      _sortSpeed = 0;
+      return;
+    }
+    _sortSpeed = speed;
+    render();
+  }
+
   @mustCallSuper
   void sort() {
     reset();
+    _isSorting = true;
   }
 
   @protected
-  int get length => numbers.length;
+  void reset() {
+    _isSorting = false;
+    _isSorted = false;
+    for (final number in numbers) {
+      number.reset();
+    }
+    numbers.shuffle();
+    notifyListeners();
+  }
 
   @protected
-  void reset() {}
+  void render() {
+    notifyListeners();
+  }
+
+  @protected
+  void markNodeAsNotSorted(int index) {
+    numbers[index].reset();
+  }
+
+  @protected
+  void markNodesAsNotSorted(int left, int right) {
+    for (var index = left; index <= right; index++) {
+      numbers[index].reset();
+    }
+  }
+
+  @protected
+  void markNodeForSorting(int index) {
+    numbers[index].sort();
+  }
+
+  @protected
+  void markNodesForSorting(int indexOne, int indexTwo) {
+    numbers[indexOne].sort();
+    numbers[indexTwo].sort();
+  }
+
+  @protected
+  void markNodeAsSorted(int index) {
+    numbers[index].sorted();
+  }
+
+  @protected
+  void markNodesAsSorted(int left, int right) {
+    for (var i = left; i <= right; i++) {
+      numbers[i].sorted();
+    }
+  }
+
+  @protected
+  void setStateToSorted() {
+    _isSorting = false;
+    _isSorted = true;
+  }
 }
