@@ -13,8 +13,8 @@ class SearchSpeed<T extends SearchProvider> extends StatelessWidget {
           builder: (context, provider, child) {
             return Container(
               child: Slider(
-                value: provider.sortSpeed,
-                onChanged: (value) => provider.sortSpeed = value,
+                value: provider.executionSpeed,
+                onChanged: (value) => provider.executionSpeed = value,
               ),
             );
           },

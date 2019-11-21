@@ -1,7 +1,9 @@
 import 'package:algorithms_visualizer/models/sort_model.dart';
 import 'package:flutter/material.dart';
 
-class SortProvider extends ChangeNotifier {
+import '../base_provider.dart';
+
+abstract class SortProvider extends BaseProvider {
   List<SortModel> numbers = [
     SortModel(22),
     SortModel(4),
@@ -29,20 +31,20 @@ class SortProvider extends ChangeNotifier {
   bool _isSorted = false;
   bool get isSorted => _isSorted;
 
-  double _sortSpeed = 0.5;
-  double get sortSpeed => _sortSpeed;
-  set sortSpeed(double speed) {
-    if (speed > 1.0) {
-      _sortSpeed = 1;
-      return;
-    }
-    if (speed < 0) {
-      _sortSpeed = 0;
-      return;
-    }
-    _sortSpeed = speed;
-    render();
-  }
+  // double _sortSpeed = 0.5;
+  // double get sortSpeed => _sortSpeed;
+  // set sortSpeed(double speed) {
+  //   if (speed > 1.0) {
+  //     _sortSpeed = 1;
+  //     return;
+  //   }
+  //   if (speed < 0) {
+  //     _sortSpeed = 0;
+  //     return;
+  //   }
+  //   _sortSpeed = speed;
+  //   render();
+  // }
 
   @mustCallSuper
   void sort() {
@@ -61,10 +63,10 @@ class SortProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  @protected
-  void render() {
-    notifyListeners();
-  }
+  // @protected
+  // void render() {
+  //   notifyListeners();
+  // }
 
   @protected
   void markNodeAsNotSorted(int index) {

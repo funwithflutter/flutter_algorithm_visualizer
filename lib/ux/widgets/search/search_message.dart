@@ -1,7 +1,6 @@
 import 'package:algorithms_visualizer/providers/search/search_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 class SearchMessage<T extends SearchProvider> extends StatefulWidget {
   const SearchMessage({
     Key key,

@@ -19,14 +19,14 @@ class BubbleSortProvider extends SortProvider {
         markNodesForSorting(i, i + 1);
         render();
         if (list[i].value > list[i + 1].value) {
-          await wait(sortSpeed: sortSpeed);
+          await wait(speed: executionSpeed);
           final tmp = list[i];
           list[i] = list[i + 1];
           list[i + 1] = tmp;
           sorted = false;
           render();
         }
-        await wait(sortSpeed: sortSpeed);
+        await wait(speed: executionSpeed);
         markNodesAsNotSorted(0, i);
       }
       markNodeAsSorted(list.length - 1 - counter);

@@ -1,6 +1,7 @@
-import 'package:algorithms_visualizer/ux/pages/binary_search.dart';
+import 'package:algorithms_visualizer/providers/search/binary_search_provider.dart';
+import 'package:algorithms_visualizer/providers/search/linear_search_provider.dart';
 import 'package:algorithms_visualizer/ux/pages/bubble_sort.dart';
-import 'package:algorithms_visualizer/ux/pages/linear_search.dart';
+import 'package:algorithms_visualizer/ux/pages/search_page.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
@@ -23,8 +24,8 @@ class _HomeState extends State<Home> {
   }
 
   var pages = [
-    const LinearSearchPage(),
-    const BinarySearchPage(),
+    const SearchPage<LinearSearchProvider>(title: 'Linear Search'),
+    const SearchPage<BinarySearchProvider>(title: 'Binary Search'),
     const BubbleSortPage(),
   ];
 
