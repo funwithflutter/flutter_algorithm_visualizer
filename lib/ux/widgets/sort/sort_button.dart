@@ -1,8 +1,8 @@
-import 'package:algorithms_visualizer/providers/sort/bubble_sort_provider.dart';
+import 'package:algorithms_visualizer/providers/sort/sort_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SortButton extends StatelessWidget {
+class SortButton<T extends SortProvider> extends StatelessWidget {
   const SortButton({
     Key key,
   }) : super(key: key);
@@ -22,7 +22,7 @@ class SortButton extends StatelessWidget {
         //       child: child);
         // },
         // child: const Text('Sort'));
-    return Consumer<BubbleSortProvider>(
+    return Consumer<T>(
       builder: (_, sortProvider, child) {
         return RaisedButton(
           child: child,

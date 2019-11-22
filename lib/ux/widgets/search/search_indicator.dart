@@ -68,14 +68,3 @@ class _SearchIndicatorState<T extends SearchProvider>
     );
   }
 }
-// child: Container(
-//   height: 60,
-//   width: 60,
-//   decoration: BoxDecoration(
-//     border: Border.all(),
-//     borderRadius: BorderRadius.all(
-//       Radius.circular(5.0),
-//     ),
-//   ),
-// ),
-// );

@@ -1,8 +1,8 @@
-import 'package:algorithms_visualizer/providers/sort/bubble_sort_provider.dart';
+import 'package:algorithms_visualizer/providers/sort/sort_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SortSpeed extends StatelessWidget {
+class SortSpeed<T extends SortProvider> extends StatelessWidget {
   const SortSpeed({Key key}) : super(key: key);
 
   @override
@@ -21,7 +21,7 @@ class SortSpeed extends StatelessWidget {
     //     });
     return Column(
       children: <Widget>[
-        Consumer<BubbleSortProvider>(
+        Consumer<T>(
           builder: (context, provider, child) {
             return Container(
               child: Slider(

@@ -1,16 +1,16 @@
+import 'package:algorithms_visualizer/providers/sort/sort_provider.dart';
 import 'package:algorithms_visualizer/ux/widgets/sort/sort_speed.dart';
 import 'package:algorithms_visualizer/ux/widgets/sort/sort_visualizer.dart';
 import 'package:algorithms_visualizer/ux/widgets/sort/sort_button.dart';
 import 'package:flutter/material.dart';
 
-class BubbleSortPage extends StatefulWidget {
-  const BubbleSortPage({Key key}) : super(key: key);
+class SortPage<T extends SortProvider> extends StatelessWidget {
+  const SortPage({Key key, @required this.title})
+      : assert(title != null),
+        super(key: key);
 
-  @override
-  _BubbleSortPageState createState() => _BubbleSortPageState();
-}
+  final String title;
 
-class _BubbleSortPageState extends State<BubbleSortPage> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -22,15 +22,12 @@ class _BubbleSortPageState extends State<BubbleSortPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 32.0),
-            child: Text('Bubble Sort',
+            child: Text(title,
                 style: Theme.of(context).textTheme.display1),
           ),
-          const AspectRatio(
-            aspectRatio: 1,
-            child: SortVisualizer()
-          ),
-          const SortButton(),
-          const SortSpeed(),
+          AspectRatio(aspectRatio: 1, child: SortVisualizer<T>()),
+          SortButton<T>(),
+          SortSpeed<T>(),
         ],
       ),
     );

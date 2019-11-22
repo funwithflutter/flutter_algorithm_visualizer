@@ -1,3 +1,4 @@
+import 'package:algorithms_visualizer/utils/wait.dart';
 import 'package:flutter/material.dart';
 
 abstract class BaseProvider extends ChangeNotifier {
@@ -19,5 +20,10 @@ abstract class BaseProvider extends ChangeNotifier {
   @protected
   void render() {
     notifyListeners();
+  }
+
+  @protected
+  Future pause() async {
+    await wait(speed: executionSpeed);
   }
 }

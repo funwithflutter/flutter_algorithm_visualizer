@@ -1,6 +1,5 @@
 import 'package:algorithms_visualizer/models/sort_model.dart';
 import 'package:algorithms_visualizer/providers/sort/sort_provider.dart';
-import 'package:algorithms_visualizer/utils/wait.dart';
 
 class BubbleSortProvider extends SortProvider {
   @override
@@ -19,14 +18,14 @@ class BubbleSortProvider extends SortProvider {
         markNodesForSorting(i, i + 1);
         render();
         if (list[i].value > list[i + 1].value) {
-          await wait(speed: executionSpeed);
+          await pause();
           final tmp = list[i];
           list[i] = list[i + 1];
           list[i + 1] = tmp;
           sorted = false;
           render();
         }
-        await wait(speed: executionSpeed);
+        await pause();
         markNodesAsNotSorted(0, i);
       }
       markNodeAsSorted(list.length - 1 - counter);

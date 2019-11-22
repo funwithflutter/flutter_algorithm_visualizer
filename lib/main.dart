@@ -1,3 +1,4 @@
+import 'package:algorithms_visualizer/providers/sort/insertion_sort_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:algorithms_visualizer/providers/search/linear_search_provider.dart';
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Algorithms',
       debugShowCheckedModeBanner: false,
+      showPerformanceOverlay: true,
       home: Scaffold(
         body: MultiProvider(
           providers: [
@@ -24,6 +26,9 @@ class MyApp extends StatelessWidget {
             ),
             ChangeNotifierProvider(
               builder: (_) => BubbleSortProvider(),
+            ),
+            ChangeNotifierProvider(
+              builder: (_) => InsertionSortProvider(),
             )
           ],
           child: const Home(),

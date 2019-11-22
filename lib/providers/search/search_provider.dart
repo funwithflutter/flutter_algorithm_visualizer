@@ -1,5 +1,4 @@
 import 'package:algorithms_visualizer/providers/base_provider.dart';
-import 'package:algorithms_visualizer/utils/wait.dart';
 import 'package:flutter/material.dart';
 import 'package:algorithms_visualizer/models/search_model.dart';
 
@@ -31,21 +30,6 @@ abstract class SearchProvider extends BaseProvider {
   bool get isSearching => _isSearching;
   int get position => _position;
 
-  // double _sortSpeed = 0.5;
-  // double get sortSpeed => _sortSpeed;
-  // set sortSpeed(double speed) {
-  //   if (speed > 1.0) {
-  //     _sortSpeed = 1;
-  //     return;
-  //   }
-  //   if (speed < 0) {
-  //     _sortSpeed = 0;
-  //     return;
-  //   }
-  //   _sortSpeed = speed;
-  //   render();
-  // }
-
   @mustCallSuper
   void search({int value = 34}) {
     reset();
@@ -61,16 +45,6 @@ abstract class SearchProvider extends BaseProvider {
     }
     notifyListeners();
   }
-
-  @protected
-  Future pause() async {
-    await wait(speed: executionSpeed);
-  }
-
-  // @protected
-  // void render() {
-  //   notifyListeners();
-  // }
 
   @protected
   void potentialNode(int index) {
@@ -112,8 +86,4 @@ abstract class SearchProvider extends BaseProvider {
     _position = -1;
     notifyListeners();
   }
-
-  // void setNumbers(List<NumberModel> list) {
-  //   numbers = list;
-  // }
 }

@@ -31,21 +31,6 @@ abstract class SortProvider extends BaseProvider {
   bool _isSorted = false;
   bool get isSorted => _isSorted;
 
-  // double _sortSpeed = 0.5;
-  // double get sortSpeed => _sortSpeed;
-  // set sortSpeed(double speed) {
-  //   if (speed > 1.0) {
-  //     _sortSpeed = 1;
-  //     return;
-  //   }
-  //   if (speed < 0) {
-  //     _sortSpeed = 0;
-  //     return;
-  //   }
-  //   _sortSpeed = speed;
-  //   render();
-  // }
-
   @mustCallSuper
   void sort() {
     reset();
@@ -63,11 +48,6 @@ abstract class SortProvider extends BaseProvider {
     notifyListeners();
   }
 
-  // @protected
-  // void render() {
-  //   notifyListeners();
-  // }
-
   @protected
   void markNodeAsNotSorted(int index) {
     numbers[index].reset();
@@ -75,6 +55,10 @@ abstract class SortProvider extends BaseProvider {
 
   @protected
   void markNodesAsNotSorted(int left, int right) {
+    if (left < 0 || right > numbers.length - 1 || left > right) {
+      print('left: $left, right: $right');
+      return;
+    }
     for (var index = left; index <= right; index++) {
       numbers[index].reset();
     }

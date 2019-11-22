@@ -1,9 +1,9 @@
-import 'package:algorithms_visualizer/providers/sort/bubble_sort_provider.dart';
+import 'package:algorithms_visualizer/providers/sort/sort_provider.dart';
 import 'package:algorithms_visualizer/ux/widgets/sort/sort_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SortVisualizer extends StatefulWidget {
+class SortVisualizer<T extends SortProvider> extends StatelessWidget {
   const SortVisualizer({
     Key key,
     this.blockSize = 100,
@@ -11,21 +11,16 @@ class SortVisualizer extends StatefulWidget {
 
   final double blockSize;
 
-  @override
-  _SortVisualizerState createState() => _SortVisualizerState();
-}
-
-class _SortVisualizerState extends State<SortVisualizer> {
   double _getHeight(Size size, int numOfWidgets) {
-    final horizontalFit = size.width ~/ widget.blockSize;
+    final horizontalFit = size.width ~/ blockSize;
     final rows = (numOfWidgets / horizontalFit).ceil();
-    return rows * widget.blockSize;
+    return rows * blockSize;
   }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Consumer<BubbleSortProvider>(
+      child: Consumer<T>(
         builder: (_, provider, __) {
           return SizedBox(
             height: _getHeight(
@@ -39,7 +34,7 @@ class _SortVisualizerState extends State<SortVisualizer> {
                     key: provider.numbers[i].key,
                     number: provider.numbers[i],
                     index: i,
-                    widgetSize: widget.blockSize,
+                    widgetSize: blockSize,
                   )
               ],
             ),
