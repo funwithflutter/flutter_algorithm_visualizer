@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  PageController pageController = PageController();
+  PageController pageController = PageController(keepPage: false);
 
   var page = 0.0;
 
@@ -38,6 +38,7 @@ class _HomeState extends State<Home> {
       children: <Widget>[
         Expanded(
           child: PageView.builder(
+            controller: pageController,
             itemCount: pages.length,
             onPageChanged: (page) {
               _updateIndicator(page);

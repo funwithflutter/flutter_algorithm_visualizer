@@ -33,7 +33,7 @@ class _SearchState<T extends SearchProvider> extends State<Search<T>> {
           width: 100,
           child: TextField(
             controller: searchController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Value',
             ),
             inputFormatters: <TextInputFormatter>[

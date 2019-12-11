@@ -31,7 +31,7 @@ class SearchPage<T extends SearchProvider> extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            Expanded(
+            const Expanded(
               child: SearchVisualizer<T>(),
             ),
             SearchMessage<T>(),

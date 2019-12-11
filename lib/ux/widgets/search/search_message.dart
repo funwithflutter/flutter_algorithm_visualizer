@@ -19,19 +19,21 @@ class _SearchMessageState<T extends SearchProvider>
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<T>(builder: (_, searchProvider, __) {
+    return Selector<T, int>(
+        selector: (_, provider) => provider.position,
+        builder: (_, position, __) {
       String outputMessage;
-      if (searchProvider.position == -2) {
+      if (position == -2) {
         outputMessage = '';
         _fontSize = 0;
         _color = Colors.black;
-      } else if (searchProvider.position == -1) {
+      } else if (position == -1) {
         outputMessage = 'Value not found';
         _fontSize = 24;
         _color = Colors.red;
       } else {
         outputMessage =
-            'Value found at position: ${(searchProvider.position + 1).toString()}';
+            'Value found at position: ${(position + 1).toString()}';
         _fontSize = 24;
         _color = Colors.black;
       }

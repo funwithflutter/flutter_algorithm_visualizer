@@ -42,7 +42,7 @@ class _SearchIndicatorState<T extends SearchProvider>
     return Consumer<T>(
       builder: (_, searchProvider, child) {
         for (var number in searchProvider.numbers) {
-          if (number.state == SearchState.search) {
+          if (number.state.value == SearchState.search) {
             _position = _getIndicatorOffset(number);
             break;
           }
