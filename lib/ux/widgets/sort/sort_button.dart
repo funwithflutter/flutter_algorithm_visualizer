@@ -22,14 +22,15 @@ class SortButton<T extends SortProvider> extends StatelessWidget {
         //       child: child);
         // },
         // child: const Text('Sort'));
-    return Consumer<T>(
-      builder: (_, sortProvider, child) {
+    return Selector<T, bool>(
+      selector: (_, provider) => provider.isSorting,
+      builder: (_, isSorting, child) {
         return RaisedButton(
           child: child,
-          onPressed: sortProvider.isSorting
+          onPressed: isSorting
               ? null
               : () {
-                  sortProvider.sort();
+                  Provider.of<T>(context, listen: false).sort();
                 },
         );
       },

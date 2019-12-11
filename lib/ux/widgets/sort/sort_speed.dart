@@ -21,12 +21,13 @@ class SortSpeed<T extends SortProvider> extends StatelessWidget {
     //     });
     return Column(
       children: <Widget>[
-        Consumer<T>(
-          builder: (context, provider, child) {
+        Selector<T, double>(
+          selector: (context, provider) => provider.executionSpeed,
+          builder: (context, executionSpeed, child) {
             return Container(
               child: Slider(
-                value: provider.executionSpeed,
-                onChanged: (value) => provider.executionSpeed = value,
+                value: executionSpeed,
+                onChanged: (value) => Provider.of<T>(context, listen: false).executionSpeed = value,
               ),
             );
           },

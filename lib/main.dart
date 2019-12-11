@@ -14,21 +14,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Algorithms',
       debugShowCheckedModeBanner: false,
-      showPerformanceOverlay: true,
+      // showPerformanceOverlay: true,
       home: Scaffold(
         body: MultiProvider(
           providers: [
             ChangeNotifierProvider(
-              builder: (_) => LinearSearchProvider(),
+              create: (_) => LinearSearchProvider(),
             ),
             ChangeNotifierProvider(
-              builder: (_) => BinarySearchProvider(),
+              create: (_) => BinarySearchProvider(),
             ),
             ChangeNotifierProvider(
-              builder: (_) => BubbleSortProvider(),
+              create: (_) => BubbleSortProvider(),
             ),
             ChangeNotifierProvider(
-              builder: (_) => InsertionSortProvider(),
+              create: (_) => InsertionSortProvider(),
             )
           ],
           child: const Home(),

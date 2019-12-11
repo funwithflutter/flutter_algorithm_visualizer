@@ -9,8 +9,8 @@ class SearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final numberValue = number.value.toString();
-    print(numberValue);
+    // final numberValue = number.value.toString();
+    // print(numberValue);
 
     return ValueListenableBuilder<SearchState>(
       valueListenable: number.state,
@@ -37,7 +37,7 @@ class SearchWidget extends StatelessWidget {
                 : null,
             borderRadius: const BorderRadius.all(Radius.circular(5.0)),
           ),
-          child: CustomTextStyle(fontSize: fontSize, number: number, numberValue: numberValue, state: state),
+          child: CustomTextStyle(fontSize: fontSize, number: number, numberValue: number.value.toString(), state: state),
         );
       },
       // child: AnimatedContainer(

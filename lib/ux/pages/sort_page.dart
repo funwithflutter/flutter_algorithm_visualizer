@@ -25,9 +25,10 @@ class SortPage<T extends SortProvider> extends StatelessWidget {
             child: Text(title,
                 style: Theme.of(context).textTheme.display1),
           ),
-          const AspectRatio(aspectRatio: 1, child: SortVisualizer<T>()),
-          SortButton<T>(),
+          //Cannot be const
+          AspectRatio(aspectRatio: 1, child: SortVisualizer<T>()),
           SortSpeed<T>(),
+          SortButton<T>(),
         ],
       ),
     );

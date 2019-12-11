@@ -53,14 +53,16 @@ class _SearchState<T extends SearchProvider> extends State<Search<T>> {
         //   child: const Text('Search'),
         // )
 
-        Consumer<T>(
-            builder: (_, provider, child) {
-              return RaisedButton(
-                onPressed: provider.isSearching ? null : _search,
-                child: child,
-              );
-            },
-            child: const Text('Search'))
+        Selector<T, bool>(
+          selector: (_, provider) => provider.isSearching,
+          builder: (_, isSearching, child) {
+            return RaisedButton(
+              onPressed: isSearching ? null : _search,
+              child: child,
+            );
+          },
+          child: const Text('Search'),
+        )
       ],
     );
   }
