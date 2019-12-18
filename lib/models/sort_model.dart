@@ -4,6 +4,7 @@ enum SortState {
   open,
   sort,
   sorted,
+  pivot,
 }
 
 class SortModel {
@@ -30,5 +31,10 @@ class SortModel {
   void sorted() {
     state = SortState.sorted;
     color = Colors.green;
+  }
+
+  void pivot() {
+    state = SortState.pivot;
+    color = Colors.pink;
   }
 }

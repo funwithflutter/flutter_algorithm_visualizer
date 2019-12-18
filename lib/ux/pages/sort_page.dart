@@ -5,11 +5,12 @@ import 'package:algorithms_visualizer/ux/widgets/sort/sort_button.dart';
 import 'package:flutter/material.dart';
 
 class SortPage<T extends SortProvider> extends StatelessWidget {
-  const SortPage({Key key, @required this.title})
+  const SortPage({Key key, @required this.title, this.blockSize = 100})
       : assert(title != null),
         super(key: key);
 
   final String title;
+  final double blockSize;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +23,16 @@ class SortPage<T extends SortProvider> extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 32.0),
-            child: Text(title,
-                style: Theme.of(context).textTheme.display1),
+            child: Text(title, style: Theme.of(context).textTheme.display1),
           ),
           //Cannot be const
-          AspectRatio(aspectRatio: 1, child: SortVisualizer<T>()),
+          Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.5,
+              child: Center(
+                  child: SortVisualizer<T>(
+                blockSize: blockSize,
+              ))),
           SortSpeed<T>(),
           SortButton<T>(),
         ],

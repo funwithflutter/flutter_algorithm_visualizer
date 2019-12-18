@@ -66,6 +66,9 @@ abstract class SortProvider extends BaseProvider {
 
   @protected
   void markNodeForSorting(int index) {
+    if (index < 0 || index >= numbers.length) {
+      return;
+    }
     numbers[index].sort();
   }
 
@@ -85,6 +88,11 @@ abstract class SortProvider extends BaseProvider {
     for (var i = left; i <= right; i++) {
       numbers[i].sorted();
     }
+  }
+
+  @protected
+  void markNodeAsPivot(int index) {
+    numbers[index].pivot();
   }
 
   @protected

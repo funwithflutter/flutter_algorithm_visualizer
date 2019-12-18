@@ -17,9 +17,12 @@ class SortWidget extends StatelessWidget {
 
   Offset _getPosition(Size size) {
     final horizontalFit = size.width ~/ widgetSize;
+    final leftOver = size.width - (horizontalFit * widgetSize);
+    print(leftOver);
     final verticalIndex = index ~/ horizontalFit;
     final horizontalIndex = index % horizontalFit;
-    return Offset(widgetSize * horizontalIndex, widgetSize * verticalIndex);
+    return Offset((widgetSize * horizontalIndex) + leftOver / 2,
+        widgetSize * verticalIndex);
   }
 
   @override

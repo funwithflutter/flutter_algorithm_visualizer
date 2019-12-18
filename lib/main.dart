@@ -1,4 +1,5 @@
 import 'package:algorithms_visualizer/providers/sort/insertion_sort_provider.dart';
+import 'package:algorithms_visualizer/providers/sort/quick_sort_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:algorithms_visualizer/providers/search/linear_search_provider.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
             ),
             ChangeNotifierProvider(
               create: (_) => InsertionSortProvider(),
+            ),
+            ChangeNotifierProvider(
+              create: (_) => QuickSortProvider(),
             )
           ],
           child: const Home(),
