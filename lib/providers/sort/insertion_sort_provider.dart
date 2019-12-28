@@ -13,17 +13,15 @@ class InsertionSortProvider extends SortProvider {
       if (i > 1) {
         markNodesAsNotSorted(0, i - 2);
       }
-      for (var j = i; j > 0; j--) {
+      for (var j = i; j > 0 && (list[j].value < list[j - 1].value); j--) {
         markNodesForSorting(j - 1, j);
         await pause();
         render();
-        if (list[j].value < list[j - 1].value) {
-          final tmp = list[j];
-          list[j] = list[j - 1];
-          list[j - 1] = tmp;
-          await pause();
-          render();
-        }
+        final tmp = list[j];
+        list[j] = list[j - 1];
+        list[j - 1] = tmp;
+        await pause();
+        render();
         markNodeAsNotSorted(j);
       }
     }
