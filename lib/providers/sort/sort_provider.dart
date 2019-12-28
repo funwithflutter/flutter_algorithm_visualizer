@@ -100,4 +100,11 @@ abstract class SortProvider extends BaseProvider {
     _isSorting = false;
     _isSorted = true;
   }
+
+  @protected
+  void setStateToSortedAndRender() {
+    _isSorting = false;
+    _isSorted = true;
+    render();
+  }
 }

@@ -1,8 +1,10 @@
+import 'package:algorithms_visualizer/alogrithms/sort/selection_sort.dart';
 import 'package:algorithms_visualizer/providers/search/binary_search_provider.dart';
 import 'package:algorithms_visualizer/providers/search/linear_search_provider.dart';
 import 'package:algorithms_visualizer/providers/sort/bubble_sort_provider.dart';
 import 'package:algorithms_visualizer/providers/sort/insertion_sort_provider.dart';
 import 'package:algorithms_visualizer/providers/sort/quick_sort_provider.dart';
+import 'package:algorithms_visualizer/providers/sort/selection_sort_provider.dart';
 import 'package:algorithms_visualizer/ux/pages/search_page.dart';
 import 'package:algorithms_visualizer/ux/pages/sort_page.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -27,6 +29,7 @@ class _HomeState extends State<Home> {
   }
 
   var pages = [
+    const SortPage<SelectionSortProvider>(title: 'Selection Sort'),
     const SortPage<QuickSortProvider>(
       title: 'Quick Sort',
       blockSize: 70,
@@ -34,7 +37,9 @@ class _HomeState extends State<Home> {
     const SearchPage<LinearSearchProvider>(title: 'Linear Search'),
     const SearchPage<BinarySearchProvider>(title: 'Binary Search'),
     const SortPage<BubbleSortProvider>(title: 'Bubble Sort'),
-    const SortPage<InsertionSortProvider>(title: 'Insertion Sort',),
+    const SortPage<InsertionSortProvider>(
+      title: 'Insertion Sort',
+    ),
   ];
 
   @override

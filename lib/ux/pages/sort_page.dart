@@ -27,12 +27,14 @@ class SortPage<T extends SortProvider> extends StatelessWidget {
           ),
           //Cannot be const
           Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.5,
-              child: Center(
-                  child: SortVisualizer<T>(
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: Center(
+              child: SortVisualizer<T>(
                 blockSize: blockSize,
-              ))),
+              ),
+            ),
+          ),
           SortSpeed<T>(),
           SortButton<T>(),
         ],

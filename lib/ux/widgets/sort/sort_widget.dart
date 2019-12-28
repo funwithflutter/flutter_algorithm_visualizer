@@ -18,7 +18,6 @@ class SortWidget extends StatelessWidget {
   Offset _getPosition(Size size) {
     final horizontalFit = size.width ~/ widgetSize;
     final leftOver = size.width - (horizontalFit * widgetSize);
-    print(leftOver);
     final verticalIndex = index ~/ horizontalFit;
     final horizontalIndex = index % horizontalFit;
     return Offset((widgetSize * horizontalIndex) + leftOver / 2,
@@ -45,7 +44,7 @@ class SortWidget extends StatelessWidget {
     }
 
     return AnimatedPositioned(
-      duration: const Duration(milliseconds: 1250),
+      duration: const Duration(milliseconds: 2250),
       curve: Curves.elasticOut,
       left: offset.dx,
       top: offset.dy,

@@ -8,10 +8,6 @@ class SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    // final numberValue = number.value.toString();
-    // print(numberValue);
-
     return ValueListenableBuilder<SearchState>(
       valueListenable: number.state,
       builder: (context, state, child) {
