@@ -20,14 +20,11 @@ class SearchPage<T extends SearchProvider> extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            const SizedBox(
-              height: 64,
-            ),
             Padding(
               padding: const EdgeInsets.only(top: 32.0),
               child: Text(
                 title,
-                style: Theme.of(context).textTheme.display1,
+                style: Theme.of(context).textTheme.headline4,
               ),
             ),
             const SizedBox(height: 24),

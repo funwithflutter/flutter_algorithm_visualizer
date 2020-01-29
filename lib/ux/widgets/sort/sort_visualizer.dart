@@ -7,12 +7,15 @@ class SortVisualizer<T extends SortProvider> extends StatelessWidget {
   const SortVisualizer({
     Key key,
     this.blockSize = 100,
+    @required this.width,
   }) : super(key: key);
 
   final double blockSize;
+  final double width;
 
-  double _getHeight(Size size, int numOfWidgets) {
-    final horizontalFit = size.width ~/ blockSize;
+  double _getHeight(double width, int numOfWidgets) {
+    print('helo:$width');
+    final horizontalFit = width ~/ blockSize;
     final rows = (numOfWidgets / horizontalFit).ceil();
     return rows * blockSize;
   }
@@ -23,8 +26,9 @@ class SortVisualizer<T extends SortProvider> extends StatelessWidget {
       child: Consumer<T>(
         builder: (_, provider, __) {
           return SizedBox(
+            width: width,
             height: _getHeight(
-              MediaQuery.of(context).size,
+              width,
               provider.numbers.length,
             ),
             child: Stack(
@@ -35,6 +39,7 @@ class SortVisualizer<T extends SortProvider> extends StatelessWidget {
                     number: provider.numbers[i],
                     index: i,
                     widgetSize: blockSize,
+                    containerWidth: width,
                   )
               ],
             ),
@@ -42,5 +47,6 @@ class SortVisualizer<T extends SortProvider> extends StatelessWidget {
         },
       ),
     );
+    // child:
   }
 }

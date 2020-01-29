@@ -40,9 +40,9 @@ class _SearchMessageState<T extends SearchProvider>
       return Container(
         height: 50,
         child: AnimatedDefaultTextStyle(
-          duration: const Duration(milliseconds: 1500),
-          curve: Curves.elasticOut,
-          style: Theme.of(context).textTheme.headline.copyWith(
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.ease,
+          style: Theme.of(context).textTheme.headline5.copyWith(
                 fontSize: _fontSize,
                 color: _color,
               ),

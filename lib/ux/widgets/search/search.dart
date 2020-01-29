@@ -57,11 +57,13 @@ class _SearchState<T extends SearchProvider> extends State<Search<T>> {
           selector: (_, provider) => provider.isSearching,
           builder: (_, isSearching, child) {
             return RaisedButton(
+              color: Colors.blue,
+              disabledColor: Colors.blueGrey,
               onPressed: isSearching ? null : _search,
               child: child,
             );
           },
-          child: const Text('Search'),
+          child: const Text('Search', style: TextStyle(color: Colors.white)),
         )
       ],
     );

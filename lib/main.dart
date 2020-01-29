@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:algorithms_visualizer/providers/search/linear_search_provider.dart';
 import 'package:algorithms_visualizer/providers/search/binary_search_provider.dart';
 import 'package:algorithms_visualizer/providers/sort/bubble_sort_provider.dart';
-import 'package:algorithms_visualizer/ux/pages/home.dart';
+import 'package:algorithms_visualizer/ux/pages/home/home.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
               create: (_) => SelectionSortProvider(),
             )
           ],
-          child: const Home(),
+          child: Home(),
         ),
       ),
     );

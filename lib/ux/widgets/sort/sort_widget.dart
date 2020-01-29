@@ -6,7 +6,7 @@ class SortWidget extends StatelessWidget {
     Key key,
     @required this.number,
     @required this.index,
-    @required this.widgetSize,
+    @required this.widgetSize, @required this.containerWidth,
   })  : assert(number != null && index != null && widgetSize != null),
         assert(index >= 0 && widgetSize > 30),
         super(key: key);
@@ -14,10 +14,12 @@ class SortWidget extends StatelessWidget {
   final SortModel number;
   final int index;
   final double widgetSize;
+  final double containerWidth;
 
-  Offset _getPosition(Size size) {
-    final horizontalFit = size.width ~/ widgetSize;
-    final leftOver = size.width - (horizontalFit * widgetSize);
+
+  Offset _getPosition(double width) {
+    final horizontalFit = width ~/ widgetSize;
+    final leftOver = width - (horizontalFit * widgetSize);
     final verticalIndex = index ~/ horizontalFit;
     final horizontalIndex = index % horizontalFit;
     return Offset((widgetSize * horizontalIndex) + leftOver / 2,
@@ -26,7 +28,7 @@ class SortWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final offset = _getPosition(MediaQuery.of(context).size);
+    final offset = _getPosition(containerWidth);
 
     var _fontSize = 20.0;
     var _borderRadius = 5.0;

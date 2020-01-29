@@ -14,31 +14,33 @@ class SortPage<T extends SortProvider> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          const SizedBox(
-            height: 64,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 32.0),
-            child: Text(title, style: Theme.of(context).textTheme.display1),
-          ),
-          //Cannot be const
-          Container(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.5,
-            child: Center(
-              child: SortVisualizer<T>(
-                blockSize: blockSize,
+    return LayoutBuilder(builder: (_, constraints) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 32.0),
+              child: Text(title, style: Theme.of(context).textTheme.headline4),
+            ),
+            //Cannot be const
+            Expanded(
+              child: Container(
+                width: constraints.maxWidth,
+                child: Center(
+                  child: SortVisualizer<T>(
+                    blockSize: blockSize,
+                    width: constraints.maxWidth,
+                  ),
+                ),
               ),
             ),
-          ),
-          SortSpeed<T>(),
-          SortButton<T>(),
-        ],
-      ),
-    );
+            SortSpeed<T>(),
+            SortButton<T>(),
+          ],
+        ),
+      );
+    });
+    // return
   }
 }

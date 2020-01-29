@@ -9,9 +9,11 @@ class SearchSpeed<T extends SearchProvider> extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        Text('Search Speed', style: Theme.of(context).textTheme.caption),
         Consumer<T>(
           builder: (context, provider, child) {
             return Container(
+              constraints: const BoxConstraints(maxWidth: 300),
               child: Slider(
                 value: provider.executionSpeed,
                 onChanged: (value) => provider.executionSpeed = value,
@@ -19,7 +21,6 @@ class SearchSpeed<T extends SearchProvider> extends StatelessWidget {
             );
           },
         ),
-        Text('Sort Speed', style: Theme.of(context).textTheme.caption),
       ],
     );
   }

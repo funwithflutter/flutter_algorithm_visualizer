@@ -22,19 +22,24 @@ class SortButton<T extends SortProvider> extends StatelessWidget {
         //       child: child);
         // },
         // child: const Text('Sort'));
-    return Selector<T, bool>(
-      selector: (_, provider) => provider.isSorting,
-      builder: (_, isSorting, child) {
-        return RaisedButton(
-          child: child,
-          onPressed: isSorting
-              ? null
-              : () {
-                  Provider.of<T>(context, listen: false).sort();
-                },
-        );
-      },
-      child: const Text('Sort'),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Selector<T, bool>(
+        selector: (_, provider) => provider.isSorting,
+        builder: (_, isSorting, child) {
+          return RaisedButton(
+            child: child,
+            color: Colors.blue,
+            disabledColor: Colors.blueGrey,
+            onPressed: isSorting
+                ? null
+                : () {
+                    Provider.of<T>(context, listen: false).sort();
+                  },
+          );
+        },
+        child: const Text('Sort', style: TextStyle(color: Colors.white)),
+      ),
     );
   }
 }
