@@ -12,8 +12,8 @@ class PagesProvider extends ChangeNotifier {
   String categoryKey = 'Search';
 
   final _searchPages = [
-    const SearchPage<LinearSearchProvider>(title: 'Linear Search'),
-    const SearchPage<BinarySearchProvider>(title: 'Binary Search'),
+    SearchPage<LinearSearchProvider>(title: 'Linear Search'),
+    SearchPage<BinarySearchProvider>(title: 'Binary Search'),
   ];
   final _sortPages = [
     const SortPage<SelectionSortProvider>(title: 'Selection Sort'),

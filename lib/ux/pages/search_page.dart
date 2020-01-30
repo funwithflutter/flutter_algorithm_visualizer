@@ -7,15 +7,18 @@ import 'package:algorithms_visualizer/ux/widgets/search/search_visualizer.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage<T extends SearchProvider> extends StatelessWidget {
-  const SearchPage({Key key, @required this.title})
+  SearchPage({Key key, @required this.title})
       : assert(title != null),
         super(key: key);
 
   final String title;
 
+
   @override
   Widget build(BuildContext context) {
+  GlobalKey key = GlobalKey(debugLabel: title);
     return Stack(
+      key: key,
       children: <Widget>[
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,7 +42,9 @@ class SearchPage<T extends SearchProvider> extends StatelessWidget {
             const SizedBox(height: 24),
           ],
         ),
-        SearchIndicator<T>(),
+        SearchIndicator<T>(
+          parentKey: key,
+        ),
       ],
     );
   }

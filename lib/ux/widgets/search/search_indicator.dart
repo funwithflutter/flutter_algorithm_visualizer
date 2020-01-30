@@ -7,8 +7,10 @@ import 'package:provider/provider.dart';
 class SearchIndicator<T extends SearchProvider> extends StatefulWidget {
   const SearchIndicator({
     Key key,
+    @required this.parentKey,
   }) : super(key: key);
 
+  final GlobalKey parentKey;
   @override
   _SearchIndicatorState<T> createState() => _SearchIndicatorState<T>();
 }
@@ -30,7 +32,10 @@ class _SearchIndicatorState<T extends SearchProvider>
     var pos = Offset.zero;
     try {
       final RenderBox rObject = number.key.currentContext.findRenderObject();
-      pos = rObject.localToGlobal(Offset.zero);
+      final RenderBox parentObject =
+          widget.parentKey.currentContext.findRenderObject();
+      final parentPos = parentObject.localToGlobal(const Offset(0, 0));
+      pos = -rObject.globalToLocal(parentPos);
     } catch (e) {
       print(e);
     }

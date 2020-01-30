@@ -14,7 +14,6 @@ class SortVisualizer<T extends SortProvider> extends StatelessWidget {
   final double width;
 
   double _getHeight(double width, int numOfWidgets) {
-    print('helo:$width');
     final horizontalFit = width ~/ blockSize;
     final rows = (numOfWidgets / horizontalFit).ceil();
     return rows * blockSize;
